@@ -1,7 +1,13 @@
 import React from 'react'
 import { Switch, Link, Route, useRouteMatch } from 'react-router-dom'
-
+import styled, { keyframes } from 'styled-components'
+import { fadeIn } from 'react-animations'
 import Basket from './Basket'
+
+const fadeInAnimation = keyframes `${fadeIn}`
+const BasketListStyle = styled.div`
+animation: 2s ${fadeInAnimation}
+`
 
 const BasketList = ({ baskets }) => {
   const match = useRouteMatch()
@@ -15,7 +21,7 @@ const BasketList = ({ baskets }) => {
   })
 
   return(
-    <>
+    <BasketListStyle>
       <h3>Basket Options</h3>
       <ul>{
             baskets.length > 0 ?
@@ -31,7 +37,7 @@ const BasketList = ({ baskets }) => {
           <p>select your basket!</p>
         </Route>
       </Switch>
-    </>
+    </BasketListStyle>
   )
 }
 
